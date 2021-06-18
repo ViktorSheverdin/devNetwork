@@ -1,13 +1,14 @@
 import React, { Fragment } from 'react';
 import spinner from './spinner.gif';
 
-// eslint-disable-next-line import/no-anonymous-default-export
-export default () => {
+const Spinner = () => (
   <Fragment>
     <img
-      scr={spinner}
+      src={spinner}
       style={{ width: '200px', margin: 'auto', display: 'block' }}
-      alt='Loading'
+      alt='Loading...'
     />
-  </Fragment>;
-};
+  </Fragment>
+);
+
+export default Spinner;

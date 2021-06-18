@@ -17,10 +17,12 @@ const Dashboard = ({
 }) => {
   useEffect(() => {
     getCurrentProfile();
-  }, []);
+  }, [getCurrentProfile]);
   //   return <div>Dashboard</div>;
   return loading && profile === null ? (
-    <Fragment>User is loading</Fragment>
+    <Fragment>
+      <Spinner></Spinner>
+    </Fragment>
   ) : (
     <Fragment>
       <h1 className='large text-primary'>Dashboard</h1>
