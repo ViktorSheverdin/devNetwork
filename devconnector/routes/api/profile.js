@@ -52,6 +52,7 @@ router.post(
       instagram,
       linkedin,
       facebook,
+      bio,
       //   // spread the rest of the fields we don't need to check
       //   ...rest
     } = req.body;
@@ -61,6 +62,7 @@ router.post(
     profileFields.user = req.user.id;
     if (website) profileFields.website = website;
     if (status) profileFields.status = status;
+    if (bio) profileFields.bio = bio;
     if (skills) {
       profileFields.skills = skills.split(',').map((skill) => skill.trim());
     }
@@ -71,6 +73,9 @@ router.post(
     profileFields.social = {};
     if (youtube) profileFields.social.youtube = youtube;
     if (facebook) profileFields.social.facebook = facebook;
+    if (twitter) profileFields.social.twitter = twitter;
+    if (instagram) profileFields.social.instagram = instagram;
+    if (linkedin) profileFields.social.linkedin = linkedin;
 
     try {
       //   res.send('Profile api is working');
@@ -124,6 +129,7 @@ router.get('/user/:user_id', async (req, res) => {
       return res.status(400).json({ msg: 'Profile not found' });
     }
     res.json(profile);
+    console.log(profile);
   } catch (error) {
     console.error(error.message);
     if (error.kind == 'ObjectId') {
@@ -171,15 +177,8 @@ router.put(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const {
-      title,
-      company,
-      location,
-      from,
-      to,
-      current,
-      description,
-    } = req.body;
+    const { title, company, location, from, to, current, description } =
+      req.body;
 
     const newExp = {
       title,
