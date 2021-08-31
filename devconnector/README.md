@@ -1,4 +1,5 @@
 Dev Network is a social network for developers.
+
 The project features Node.js on the backend as well as React.js and Redux on the front-end.
 For the database MongoDB was used.
 
